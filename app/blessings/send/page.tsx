@@ -1,3 +1,4 @@
+import { Form } from '@/app/ui/blessings/blessing-form';
 import { lusitana } from '@/app/ui/fonts';
 
 
@@ -7,8 +8,8 @@ export default async function Page() {
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Send a Blessing
       </h1>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <h2>Form</h2>
+      <div className="">
+        <Form />
       </div>
 
     </main>

@@ -10,7 +10,7 @@ export default async function BlessingList() {
     console.log("!!!! data: ", data);
 
     return (
-        <div className="flex w-full flex-row items-start justify-start gap-6">
+        <div className="flex w-full flex-col items-start justify-start gap-6">
             {data?.map((row, index: number) => {
                 return (
                     <Card key={`blessing-card-${index}-${row[0]}`} name={row[1]} blessing={row[2]} submittedAt={row[0]} />

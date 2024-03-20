@@ -3,6 +3,7 @@
 import { google } from "googleapis";
 
 import { BlessingData } from "@/app/lib/definitions";
+import { revalidatePath } from "next/cache";
 
 
 const createGoogleAuth = () => {
@@ -45,6 +46,10 @@ export const postABlessing = async (blessingData: BlessingData) => {
                 ]
             }
         })
+
+        // Clear cache (TODO: refactor this!)
+        revalidatePath('/blessings');
+
         return { data: response.data }
     } catch (error) {
         console.log("!!! get sheets data failed with ", error);

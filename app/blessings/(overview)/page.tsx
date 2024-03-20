@@ -1,11 +1,8 @@
-import { getAllBlessings } from '@/app/lib/action-sheet';
+import BlessingList from '@/app/ui/blessings/blessing-list';
 import { lusitana } from '@/app/ui/fonts';
 
 
 export default async function Page() {
-  const data = await getAllBlessings();
-
-  console.log("!!!! data: ", data);
 
   return (
     <main>
@@ -14,6 +11,7 @@ export default async function Page() {
       </h1>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
        <h2>View blessings</h2>
+       <BlessingList />
       </div>
 
     </main>

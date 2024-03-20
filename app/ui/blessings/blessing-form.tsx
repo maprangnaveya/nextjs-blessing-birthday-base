@@ -13,12 +13,14 @@ import { Button } from "../button";
 export const Form = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         setIsLoading(true);
         setError(null);
+        setSuccessMessage(null);
 
         const formData = new FormData(event.currentTarget);
 
@@ -39,12 +41,15 @@ export const Form = () => {
         setIsLoading(false)
         if (response.error) {
             setError(response.error)
+        } else {
+            setSuccessMessage("Your blessing has been sent!");
         }
     }
 
     return (
         <div className="flex flex-col">
             {error && <div className="text-rose-700">{error}</div>}
+            {successMessage && <div className="text-green-400">{successMessage}</div>}
             <form onSubmit={onSubmit}>
                 <div className="flex items-center justify-center">
                     <label htmlFor="blessing-from-name" className="sr-only">Name</label>

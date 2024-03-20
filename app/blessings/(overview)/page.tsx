@@ -9,9 +9,9 @@ export default async function Page() {
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Blessings
       </h1>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-       <h2>View blessings</h2>
-       <BlessingList />
+      <div className="">
+        <h2>View blessings</h2>
+        <BlessingList />
       </div>
 
     </main>

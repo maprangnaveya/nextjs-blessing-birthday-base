@@ -1,5 +1,6 @@
 import { google } from "googleapis";
 
+import { BlessingData } from "@/app/lib/definitions";
 
 
 const createGoogleAuth = () => {
@@ -25,5 +26,26 @@ export const getAllBlessings = async () => {
     } catch (error) {
         console.log("!!! get sheets data failed with ", error);
         return []
+    }
+}
+export const postABlessing = async (blessingData: BlessingData) => {
+    const auth = createGoogleAuth();
+    const sheets = google.sheets({ version: "v4", auth: auth })
+    const range = "Sheet1!A1:C1"
+    try {
+        const response = await sheets.spreadsheets.values.append({
+            spreadsheetId: process.env.GOOGLE_SHEET_ID,
+            range: range,
+            valueInputOption: "USER_ENTERED",
+            requestBody: {
+                values: [
+                    [blessingData.submittedAt, blessingData.name, blessingData.blessing]
+                ]
+            }
+        })
+        return { data: response.data }
+    } catch (error) {
+        console.log("!!! get sheets data failed with ", error);
+        return { error: "Can not send blessing please try again later." }
     }
 }

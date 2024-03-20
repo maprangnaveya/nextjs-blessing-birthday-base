@@ -1,6 +1,6 @@
 import {google} from "googleapis";
 
-export const getSheetsData = async () => {
+export const getAllBlessings = async () => {
     const auth = new google.auth.GoogleAuth({
         credentials: {
             client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -10,7 +10,7 @@ export const getSheetsData = async () => {
     })
 
     const sheets = google.sheets({version: "v4", auth: auth})
-    const range = "Sheet1!A:Z"
+    const range = "Sheet1!A:C"
     try {
         const response = await sheets.spreadsheets.values.get({
             spreadsheetId: process.env.GOOGLE_SHEET_ID,

@@ -1,7 +1,12 @@
+import { getAllBlessings } from '@/app/lib/action-sheet';
 import { lusitana } from '@/app/ui/fonts';
 
 
 export default async function Page() {
+  const data = await getAllBlessings();
+
+  console.log("!!!! data: ", data);
+
   return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>

@@ -7,7 +7,7 @@ export const revalidate = 600 // revalidate at most every 10 mins
 export default async function Page() {
   const data = await getAllBlessings();
 
-  console.log("!!!! data: ", data);
+  // console.log("!!!! data: ", data);
   return (
     <main className="h-full relative">
       {/* <BlessingList data={data} />

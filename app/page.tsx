@@ -1,20 +1,37 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
+import buttonImage from '../public/images/p1_button.png';
+import zentailPostImage from '../public/images/zentail_post.png';
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-        Home
-      </div>
+    <main className="flex min-h-screen flex-col p-2 gap-y-4 items-center justify-center text-center text-white">
+      <Image
+        src={zentailPostImage}
+        width={500}
+        height={50}
+        alt="ZENTAIL POST"
+        priority
+      />
+
       <Link
         href="/blessings"
         className={
-          "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+          "items-center justify-center gap-2 p-3 text-sm font-medium mt-8"
 
         }
       >
-        <p className="hidden md:block">Go to Blessing Page!</p>
+        <Image
+          className="hover:brightness-125"
+          src={buttonImage}
+          width={300}
+          height={50}
+          alt="zentail post button to access messages page"
+          priority
+        />
       </Link>
+      <p className="text-2xl">บริการรับฝากข้อความ<br />ข้ามดวงดาว</p>
     </main>
   );
 }

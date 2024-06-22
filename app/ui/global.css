@@ -16,3 +16,21 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+body {
+  background-image: url("/images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(60%);
+  background-color: rgb(64 46 84);
+}
+.main-content {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(64 46 84 / 30%);
+}
+
+.swiper-pagination.swiper-pagination-fraction.swiper-pagination-horizontal {
+  color: white;
+  bottom: 0;
+}

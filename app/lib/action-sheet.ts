@@ -4,6 +4,7 @@ import { google } from "googleapis";
 
 import { BlessingData } from "@/app/lib/definitions";
 import { revalidatePath } from "next/cache";
+import { redirect } from 'next/navigation'
 
 
 const createGoogleAuth = () => {
@@ -19,7 +20,7 @@ const createGoogleAuth = () => {
 export const getAllBlessings = async () => {
     const auth = createGoogleAuth();
     const sheets = google.sheets({ version: "v4", auth: auth })
-    const range = "Sheet1!A2:C"
+    const range = "Form Responses 1!A2:C"
     try {
         const response = await sheets.spreadsheets.values.get({
             spreadsheetId: process.env.GOOGLE_SHEET_ID,
@@ -31,28 +32,35 @@ export const getAllBlessings = async () => {
         return []
     }
 }
+// TODO: page to reset cache
+
 export const postABlessing = async (blessingData: BlessingData) => {
-    const auth = createGoogleAuth();
-    const sheets = google.sheets({ version: "v4", auth: auth })
-    const range = "Sheet1!A1:C1"
-    try {
-        const response = await sheets.spreadsheets.values.append({
-            spreadsheetId: process.env.GOOGLE_SHEET_ID,
-            range: range,
-            valueInputOption: "USER_ENTERED",
-            requestBody: {
-                values: [
-                    [blessingData.submittedAt, blessingData.name, blessingData.blessing]
-                ]
-            }
-        })
+    // const auth = createGoogleAuth();
+    // const sheets = google.sheets({ version: "v4", auth: auth })
+    // const range = "Sheet1!A1:C1"
+    // try {
+    //     const response = await sheets.spreadsheets.values.append({
+    //         spreadsheetId: process.env.GOOGLE_SHEET_ID,
+    //         range: range,
+    //         valueInputOption: "USER_ENTERED",
+    //         requestBody: {
+    //             values: [
+    //                 [blessingData.submittedAt, blessingData.name, blessingData.blessing]
+    //             ]
+    //         }
+    //     })
 
-        // Clear cache (TODO: refactor this!)
-        revalidatePath('/blessings');
+    //     // Clear cache (TODO: refactor this!)
+    //     revalidatePath('/blessings');
 
-        return { data: response.data }
-    } catch (error) {
-        console.log("!!! get sheets data failed with ", error);
-        return { error: "Can not send blessing please try again later." }
-    }
+    //     return { data: response.data }
+    // } catch (error) {
+    //     console.log("!!! get sheets data failed with ", error);
+    return { error: "Can not send blessing please try again later." }
+    // }
+}
+
+export const clearCaches = async () => {
+    revalidatePath('/blessings');
+    redirect('/');
 }

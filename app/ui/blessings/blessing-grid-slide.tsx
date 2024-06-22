@@ -34,13 +34,22 @@ export default function BlessingGridList({ data }: { data: any[][] | null | unde
             }}
             navigation={true}
             breakpoints={{
+                480: {
+                    slidesPerView: 1,
+                    spaceBetween: 100,
+                    grid: {
+                        rows: 1,
+                        fill: "column"
+                    }
+                },
                 640: {
                     slidesPerView: 1,
-                    spaceBetween: 20,
+                    spaceBetween: 40,
+
                 },
                 768: {
                     slidesPerView: 1,
-                    spaceBetween: 20,
+                    spaceBetween: 40,
                 },
                 1024: {
                     slidesPerView: 2,

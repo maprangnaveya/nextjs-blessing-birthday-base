@@ -4,6 +4,7 @@ import { google } from "googleapis";
 
 import { BlessingData } from "@/app/lib/definitions";
 import { revalidatePath } from "next/cache";
+import { redirect } from 'next/navigation'
 
 
 const createGoogleAuth = () => {
@@ -57,4 +58,9 @@ export const postABlessing = async (blessingData: BlessingData) => {
     //     console.log("!!! get sheets data failed with ", error);
     return { error: "Can not send blessing please try again later." }
     // }
+}
+
+export const clearCaches = async () => {
+    revalidatePath('/blessings');
+    redirect('/');
 }

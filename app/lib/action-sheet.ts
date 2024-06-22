@@ -19,7 +19,7 @@ const createGoogleAuth = () => {
 export const getAllBlessings = async () => {
     const auth = createGoogleAuth();
     const sheets = google.sheets({ version: "v4", auth: auth })
-    const range = "Sheet1!A2:C"
+    const range = "Form Responses 1!A2:C"
     try {
         const response = await sheets.spreadsheets.values.get({
             spreadsheetId: process.env.GOOGLE_SHEET_ID,

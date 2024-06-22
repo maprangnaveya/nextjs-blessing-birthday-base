@@ -30,3 +30,7 @@ body {
   background-color: rgb(64 46 84 / 30%);
 }
 
+.swiper-pagination.swiper-pagination-fraction.swiper-pagination-horizontal {
+  color: white;
+  bottom: 0;
+}

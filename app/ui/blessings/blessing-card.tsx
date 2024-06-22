@@ -20,6 +20,7 @@ export const Card = ({ name, blessing, submittedAt }: BlessingData) => {
         alt="message card"
         priority
         fill
+        sizes="(min-width: 808px) 50%, 100%"
         style={{
           objectFit: 'contain',
           zIndex: '0'

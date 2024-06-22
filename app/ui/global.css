@@ -22,9 +22,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   filter: blur(60%);
+  background-color: rgb(64 46 84);
 }
 .main-content {
-  /* background-image: url("/images/background.png"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgb(64 46 84 / 30%);

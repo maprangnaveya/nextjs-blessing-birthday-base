@@ -1,11 +1,14 @@
 import Link from 'next/link';
-import Image from 'next/image'
+import Image from 'next/image';
+
+import buttonImage from '../public/images/p1_button.png';
+import zentailPostImage from '../public/images/zentail_post.png';
 
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-2 gap-y-4 items-center justify-center text-center text-white">
       <Image
-        src="/images/zentail_post.png"
+        src={zentailPostImage}
         width={500}
         height={50}
         alt="ZENTAIL POST"
@@ -21,7 +24,7 @@ export default function Page() {
       >
         <Image
           className="hover:brightness-125"
-          src="/images/p1_button.png"
+          src={buttonImage}
           width={300}
           height={50}
           alt="zentail post button to access messages page"

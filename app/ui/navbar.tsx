@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image'
+import buttonImage from '../../public/images/p2_button.png';
 
 export default function Navbar() {
     return (
@@ -8,7 +9,7 @@ export default function Navbar() {
         >
             <Image
                 className="hover:brightness-125"
-                src="/images/p2_button.png"
+                src={buttonImage}
                 width={48}
                 height={48}
                 alt="google form link"

@@ -5,7 +5,7 @@ import { useMediaQuery } from 'usehooks-ts'
 import { Card } from './blessing-card';
 
 const ITEM_PER_PAGE_DEFAULT = 4
-const ITEM_PER_PAGE_MD = 3
+const ITEM_PER_PAGE_MD = 2
 const ITEM_PER_PAGE_IPAD = 3
 const BUTTON_CLASS_NAME = "font-medium p-3 no-underline disabled:no-underline enabled:hover:underline text-white  enabled:hover:text-slate-400 enabled:cursor-pointer";
 
@@ -82,7 +82,7 @@ export default function BlessingPagination({ data }: { data: any[][] }) {
         <div className="">
             <div className="flex w-full flex-row flex-wrap items-center justify-center">
                 {currentData.map((row, index: number) => (
-                    <Card key={`blessing-card-${currentPage}-${index}-${row[0]}`} name={row[1]} blessing={row[2]} submittedAt={row[0]} />
+                    <Card key={`blessing-card-${currentPage}-${index}-${row[0]}`} name={row[2]} blessing={row[3]} submittedAt={row[0]} />
                 ))}
             </div>
             <div className="w-full relation text-white text-center text-lg justify-center mt-6 gap-6">

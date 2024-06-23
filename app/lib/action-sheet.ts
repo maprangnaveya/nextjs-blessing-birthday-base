@@ -62,5 +62,4 @@ export const postABlessing = async (blessingData: BlessingData) => {
 
 export const clearCaches = async () => {
     revalidatePath('/blessings');
-    redirect('/');
 }

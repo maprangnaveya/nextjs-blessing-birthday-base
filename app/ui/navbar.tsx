@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image'
-import buttonImage from '../../public/images/p2_button.png';
+import buttonImage from '../../public/images/p2_button_sm.png';
 
 export default function Navbar() {
     return (

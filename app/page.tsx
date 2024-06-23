@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import buttonImage from '../public/images/p1_button.png';
-import zentailPostImage from '../public/images/zentail_post.png';
+import buttonImage from '../public/images/p1_button_sm.png';
+import zentailPostImage from '../public/images/zentail_post_sm.png';
 
 export default function Page() {
   return (
@@ -10,7 +10,7 @@ export default function Page() {
       <Image
         src={zentailPostImage}
         width={500}
-        height={50}
+        height={270}
         alt="ZENTAIL POST"
         priority
       />
@@ -26,7 +26,7 @@ export default function Page() {
           className="hover:brightness-125"
           src={buttonImage}
           width={300}
-          height={50}
+          height={59}
           alt="zentail post button to access messages page"
           priority
         />

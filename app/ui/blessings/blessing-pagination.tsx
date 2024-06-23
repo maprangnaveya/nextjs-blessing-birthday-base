@@ -1,8 +1,9 @@
 "use client"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import { Card } from './blessing-card';
 
 const ITEMS_PER_PAGE = 4;
+const BUTTON_CLASS_NAME = "font-medium p-3 no-underline disabled:no-underline enabled:hover:underline text-white  enabled:hover:text-slate-400 enabled:cursor-pointer";
 
 export default function BlessingPagination({ data }: { data: any[][] }) {
     const [currentPage, setCurrentPage] = useState(1);
@@ -12,11 +13,17 @@ export default function BlessingPagination({ data }: { data: any[][] }) {
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const currentData = data.slice(startIndex, endIndex);
 
+    const handleJumpToPage = (desiredPage: SetStateAction<number>) => {
+        if (currentPage != desiredPage) {
+            setCurrentPage(desiredPage);
+        }
+    };
     const handlePreviousPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     };
+
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -58,14 +65,20 @@ export default function BlessingPagination({ data }: { data: any[][] }) {
                 ))}
             </div>
             <div className="w-full relation text-white text-center text-lg justify-center mt-6 gap-6">
-                <button className="font-medium p-3 underline hover:text-slate-400 cursor-pointer" onClick={handlePreviousPage} disabled={currentPage === 1}>
+                <button className={BUTTON_CLASS_NAME} onClick={_ => handleJumpToPage(1)} disabled={currentPage === 1}>
+                    First
+                </button>
+                <button className={BUTTON_CLASS_NAME} onClick={handlePreviousPage} disabled={currentPage === 1}>
                     Previous
                 </button>
-                <span>
+                <span className="px-3">
                     {currentPage} / {totalPages}
                 </span>
-                <button className="font-medium p-3 underline hover:text-slate-400 cursor-pointer" onClick={handleNextPage} disabled={currentPage === totalPages}>
+                <button className={BUTTON_CLASS_NAME} onClick={handleNextPage} disabled={currentPage === totalPages}>
                     Next
+                </button>
+                <button className={BUTTON_CLASS_NAME} onClick={_ => handleJumpToPage(totalPages)} disabled={currentPage === totalPages}>
+                    Last
                 </button>
             </div>
         </div>

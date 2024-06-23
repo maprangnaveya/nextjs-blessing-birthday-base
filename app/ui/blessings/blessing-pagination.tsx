@@ -5,7 +5,7 @@ import { useMediaQuery } from 'usehooks-ts'
 import { Card } from './blessing-card';
 
 const ITEM_PER_PAGE_DEFAULT = 4
-const ITEM_PER_PAGE_MD = 3
+const ITEM_PER_PAGE_MD = 2
 const ITEM_PER_PAGE_IPAD = 3
 const BUTTON_CLASS_NAME = "font-medium p-3 no-underline disabled:no-underline enabled:hover:underline text-white  enabled:hover:text-slate-400 enabled:cursor-pointer";
 

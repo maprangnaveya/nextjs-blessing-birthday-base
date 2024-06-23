@@ -1,16 +1,26 @@
 "use client"
 import { useState, useEffect, SetStateAction } from 'react';
+import { useMediaQuery } from 'usehooks-ts'
+
 import { Card } from './blessing-card';
 
-const ITEMS_PER_PAGE = 4;
+const ITEM_PER_PAGE_DEFAULT = 4
+const ITEM_PER_PAGE_MD = 3
+const ITEM_PER_PAGE_IPAD = 3
 const BUTTON_CLASS_NAME = "font-medium p-3 no-underline disabled:no-underline enabled:hover:underline text-white  enabled:hover:text-slate-400 enabled:cursor-pointer";
 
 export default function BlessingPagination({ data }: { data: any[][] }) {
     const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(ITEM_PER_PAGE_DEFAULT);
 
-    const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const endIndex = startIndex + ITEMS_PER_PAGE;
+
+    const isiPadAirScreen = useMediaQuery('(max-width: 820px)')
+    const isMediumScreen = useMediaQuery('(max-width: 768px)')
+
+
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
     const currentData = data.slice(startIndex, endIndex);
 
     const handleJumpToPage = (desiredPage: SetStateAction<number>) => {
@@ -46,6 +56,17 @@ export default function BlessingPagination({ data }: { data: any[][] }) {
             handleNextPage();
         }
     };
+
+    useEffect(() => {
+        if (isMediumScreen) {
+            setItemsPerPage(ITEM_PER_PAGE_MD);
+        } else if (isiPadAirScreen) {
+            setItemsPerPage(ITEM_PER_PAGE_IPAD);
+        } else {
+            setItemsPerPage(ITEM_PER_PAGE_DEFAULT);
+        }
+    }, [isiPadAirScreen, isMediumScreen]);
+
 
     useEffect(() => {
         window.addEventListener('wheel', handleWheel);

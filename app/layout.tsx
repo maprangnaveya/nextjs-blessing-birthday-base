@@ -17,7 +17,7 @@ export default function RootLayout({
       <body
         className={`${mainFont.className} antialiased} flex min-h-screen select-none justify-center p-0 antialiased`}
       >
-        <main className="main-content flex min-h-full w-full flex-col  px-10 pb-10 md:w-3/5 lg:w-7/12">
+        <main className="main-content flex min-h-full w-full flex-col px-3 pb-3 lg:px-10 lg:pb-10  md:w-7/12">
           {children}
         </main>
       </body>

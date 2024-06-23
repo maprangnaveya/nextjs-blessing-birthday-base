@@ -11,7 +11,7 @@ export const Card = ({ name, blessing, submittedAt }: BlessingData) => {
         zIndex: '2'
       }}>
         <p className="text-sm h-[158px] md:h-[203px] overflow-auto">{blessing}</p>
-        <h3 className="ml-[80px] md:ml-[92px]  text-center text-base font-medium basis-1/5">{name}</h3>
+        <h3 className="pl-[80px] md:pl-[180px] text-start text-base font-medium basis-1/5 truncate">{name}</h3>
         {/* <p className="truncate text-sm  basis-1/5">{submittedAt}</p> */}
       </div>
       <Image

@@ -1,7 +1,8 @@
 import Image from 'next/image'
 
 import { BlessingData } from "@/app/lib/definitions";
-import bgCard from '../../../public/images/p2_letter_sm.png';
+import bgCard from '../../../public/images/p2_letter_wo_text.png';
+import bgFromText from '../../../public/images/p2_letter_from.png';
 
 
 export const Card = ({ name, blessing, submittedAt }: BlessingData) => {
@@ -11,8 +12,16 @@ export const Card = ({ name, blessing, submittedAt }: BlessingData) => {
         zIndex: '2'
       }}>
         <p className="text-sm h-[158px] md:h-[203px] overflow-auto">{blessing}</p>
-        <h3 className="pl-[80px] md:pl-[180px] text-start text-base font-medium basis-1/5 truncate">{name}</h3>
-        {/* <p className="truncate text-sm  basis-1/5">{submittedAt}</p> */}
+        <div className="flex justify-start items-center md:justify-center">
+          <Image
+            src={bgFromText}
+            alt="from"
+            priority
+            width={43}
+            height={18}
+          />
+          <h3 className="glow pl-[4px] text-start text-base font-medium truncate" title={name} >{name}</h3>
+        </div>
       </div>
       <Image
         src={bgCard}

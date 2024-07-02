@@ -42,11 +42,11 @@ export default function BlessingPagination({ data }: { data: any[][] }) {
     };
 
     const handleWheel = (event: { deltaY: number; }) => {
-        if (event.deltaY < 0) {
-            handlePreviousPage();
-        } else if (event.deltaY > 0) {
-            handleNextPage();
-        }
+        // if (event.deltaY < 0) {
+        //     handlePreviousPage();
+        // } else if (event.deltaY > 0) {
+        //     handleNextPage();
+        // }
     };
 
     const handleKeyDown = (event: { key: string; }) => {
@@ -69,7 +69,7 @@ export default function BlessingPagination({ data }: { data: any[][] }) {
 
 
     useEffect(() => {
-        window.addEventListener('wheel', handleWheel);
+        // window.addEventListener('wheel', handleWheel);
         window.addEventListener('keydown', handleKeyDown);
 
         return () => {
